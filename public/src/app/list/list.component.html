@@ -1,0 +1,23 @@
+<div class="main">
+    <h1>Movie List</h1>
+    <button class="navigate btn btn-secondary" (click)="toAdd()" [routerLink]="['new']">Add a new movie</button>
+    <table class="table table-striped">
+        <thead>
+            <th>Movie title</th>
+            <th>Average Rating</th>
+            <th>Available Actions</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let movie of movies">
+                <td>{{movie?.title}}</td>
+                <td>{{getAvg(movie)}}</td>
+                <td>
+                    <button class="btn btn-secondary"  [routerLink]="[(movie._id)]">Read reviews</button>
+                    <button  class="btn btn-secondary" [routerLink]="[(movie._id),'review']">Write reviews</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <app-add-movie *ngIf="add" (Movie_Created)="getMovies()"></app-add-movie>
+    <!-- <router-outlet  (Movie_Created)="getMovies()"></router-outlet> -->
+</div>

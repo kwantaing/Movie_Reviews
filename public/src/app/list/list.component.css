@@ -1,0 +1,23 @@
+html, h1, hr{
+    margin:10px;
+    padding:10px;
+}
+.main{
+    display:inline-block;
+    text-align:left;
+    width: 80%;
+    border: 1px solid black;
+    padding: 10px;
+    position: relative;
+}
+table{
+    text-align:center;
+}
+button{
+    margin: 2px 15px;
+}
+.navigate{
+    position: absolute;
+    top: 30px;
+    right: 25px;
+}

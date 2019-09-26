@@ -1,0 +1,14 @@
+html, h1, hr{
+    margin:10px;
+    padding:10px;
+}
+.main{
+    display:inline-block;
+    text-align:center;
+    width: 80%;
+    border: 1px solid black;
+    padding: 10px;
+}
+button{
+    margin: 2px 15px;
+}

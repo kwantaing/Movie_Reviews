@@ -1,0 +1,26 @@
+<div class="addmain">
+    <h1>Add a review for {{movie?.title}}</h1>
+    <form (submit)="addReview(newReview)">
+        <p>Your name</p>
+        <span>{{errors?.name?.message}}</span><br *ngIf="errors?.name">
+        <span *ngIf="name.pristine==false && name.errors">Please enter a valid Title with at least 3 characters</span>
+        <input class="form-control" type="text" name="newReview.name" [(ngModel)]="newReview.name" required minlength="3" #name="ngModel">
+        <p>Stars</p>
+        <span>{{errors?.stars?.message}}</span><br *ngIf="errors?.stars">
+        <span *ngIf="stars.pristine==false && stars.errors">Please select a rating</span>
+        <select class="form-control"  name="newReview.stars" [(ngModel)]="newReview.stars" required  #stars="ngModel">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <p>Your review</p>
+        <span>{{errors?.review_message?.message}}</span><br *ngIf="errors?.review_message">
+        <span *ngIf="review_message.pristine==false && review_message.errors">Please enter a review with at least 3 characters</span>
+        <textarea class="form-control"  name="newReview.review_message" [(ngModel)]="newReview.review_message"  required minlength="3" #review_message="ngModel"></textarea>
+        <button class="btn btn-secondary" *ngIf="name.valid && review_message.valid">Submit</button>
+        <button class="btn btn-secondary"*ngIf="!name.valid || !review_message.valid" disabled="disabled">Submit</button>
+        <button class="btn btn-secondary" [routerLink]="['/movies/']">Cancel</button>
+    </form>
+</div>

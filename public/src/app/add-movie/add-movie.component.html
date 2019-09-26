@@ -1,0 +1,31 @@
+
+<div class="main">
+    <h1>Submit a movie and your review</h1>
+    <hr>
+    <form (submit)="onCreate(newMovie_with_Review)">
+        <p>Movie Title</p>
+        <span>{{errors?.title?.message}}</span><br *ngIf="errors?.title">
+        <span *ngIf="title.pristine==false && title.errors">Please enter a valid Title with at least 3 characters</span>
+        <input class="form-control" type="text" name="newMovie_with_Review.title" [(ngModel)]="newMovie_with_Review.title" required minlength="3" #title="ngModel">
+        <p>Your name</p>
+        <span>{{errors?.name?.message}}</span><br *ngIf="errors?.name">
+        <span *ngIf="name.pristine==false && name.errors">Please enter a valid Name with at least 3 characters</span>
+        <input class="form-control"  type="text" name="newMovie_with_Review.name" [(ngModel)]="newMovie_with_Review.name" required minlength="3"#name="ngModel">
+        <p>Stars</p>
+        <span>{{errors?.stars?.message}}</span><br *ngIf="errors?.stars">
+        <span *ngIf="stars.pristine==false && stars.errors">Please select a rating</span>
+        <select class="form-control"  name="newMovie_with_Review.stars" [(ngModel)]="newMovie_with_Review.stars" required #stars="ngModel">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <p>Your review</p>
+        <span>{{errors?.review_message?.message}}</span><br *ngIf="errors?.review_message">
+        <span *ngIf="review_message.pristine==false && review_message.errors">Please enter a review with at least 3 characters</span>
+        <textarea class="form-control"  name="newMovie_with_Review.review_message" [(ngModel)]="newMovie_with_Review.review_message" #review_message="ngModel" required minlength="3"></textarea>
+        <button  class="btn btn-secondary" *ngIf="!valid" >Submit</button>
+        <button  class="btn btn-secondary"  [routerLink]="['/movies']">Cancel</button>
+    </form>
+</div>
